@@ -1,24 +1,6 @@
 ﻿$(()=>{
 	console.log('v');
 	
-	/*
-	// sync:
-	$('#theButton').click(()=>{
-		const file = $('#theFile')[0].files[0];
-		if(!file)return;
-		const reader = new FileReader();
-		reader.onload=()=>{
-			const text = reader.result;
-			console.log(text);
-			$('#theText').val(text);
-		};
-		reader.onerror=()=>{
-			console.log(reader.error);
-		};
-		reader.readAsText(file);
-	});
-	*/
-	
 	// async:
 	const readAsync=(file)=>new Promise((r, q)=>{
 		const reader = new FileReader();
@@ -39,10 +21,25 @@
 		console.log(text);
 		$('#theText').val(text);
 	});
+	
+	return false;
+	
+	// sync:
+	$('#theButton').click(()=>{
+		const file = $('#theFile')[0].files[0];
+		if(!file)return;
+		const reader = new FileReader();
+		reader.onload=()=>{
+			const text = reader.result;
+			console.log(text);
+			$('#theText').val(text);
+		};
+		reader.onerror=()=>{
+			console.log(reader.error);
+		};
+		reader.readAsText(file);
+	});
 });
-
-
-
 
 
 
